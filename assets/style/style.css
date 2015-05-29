@@ -1,0 +1,21 @@
+img.logo{ 
+	height: 45px;
+	width: auto;
+	margin-top: -12px;
+}
+.nav, .pagination, .carousel, .panel-title a {
+	cursor: pointer;
+}
+
+[ng:cloak], 
+[ng-cloak], 
+[data-ng-cloak], 
+[x-ng-cloak], 
+.ng-cloak, 
+.x-ng-cloak {
+  display: none !important;
+}
+
+body {
+	padding-bottom: 20px;
+}

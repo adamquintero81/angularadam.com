@@ -1,0 +1,44 @@
+	<div class="page-header">
+		<h3>AngularJS Reference</h3>
+		<p class="small">This app demonstrates a directive I created to easily handle smooth scrolling to clicked elements.</p>
+		<p class="small">Type in the search box to filter topics, click on a topic to see it's description, and click on a description to see my notes.</p>
+		<p class="small">I am still adding topics daily.</p>
+	</div>
+	<form nonvalidate  class="form-horizontal" ng-submit="mainCtrl.filterQuery()">
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Search Keyword</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" placeholder="Topic" ng-keyup="mainCtrl.searchKeyup()" ng-model="mainCtrl.search.Keywords"> 
+			</div>
+		</div>
+	</form>
+	<table id="angularTable" class="table ng-cloak">
+		<p ng-bind="mainCtrl.showResultCount(filtered.length)"></p>
+		<tr>
+			<th>Topics</th>
+		</tr>
+		<tr ng-repeat-start="x in filtered  = (mainCtrl.topicResults | orderBy: 'Title' | filter: mainCtrl.search)">
+		</tr>
+		<tr ng-attr-id="{{mainCtrl.setTopicID(x.ID)}}" ng-class="mainCtrl.setTopicClass(x.highlightTopic)"
+		    ng-scroller scroller-if="{{x.highlightTopic}}" scroller-easing="easeInOutQuint" scroller-offset="1" scroller-duration="600">
+			<th ng-click="mainCtrl.topicClick(x.ID)" ng-bind="x.Title"></th>
+		</tr>
+		<tr ng-attr-id="{{mainCtrl.setDescTitleID(x.ID)}}" ng-class="'success'" ng-show="x.showDesc"
+		    ng-scroller scroller-to="{{mainCtrl.setTopicID(x.ID)}}" scroller-easing="easeInOutQuint" scroller-offset="1" scroller-duration="600">		
+			<th ng-click="mainCtrl.descClick(x.ID)">Descripton</th>
+		</tr>
+		<tr ng-attr-id="{{mainCtrl.setDescDataID(x.ID)}}" ng-class="'success'" ng-show="x.showDesc"
+		    ng-scroller scroller-to="{{mainCtrl.setTopicID(x.ID)}}" scroller-easing="easeInOutQuint" scroller-offset="1" scroller-duration="600">		
+			<td ng-click="mainCtrl.descClick(x.ID)" ng-bind-html="x.Description" ></td>
+		</tr>
+		<tr ng-attr-id="{{mainCtrl.setNoteTitleID(x.ID)}}" ng-class="'warning'" ng-show="x.showNote"
+		    ng-scroller scroller-to="{{mainCtrl.setTopicID(x.ID)}}" scroller-easing="easeInOutQuint" scroller-offset="1" scroller-duration="600">		
+			<th ng-click="mainCtrl.noteClick(x.ID)">Notes</th>
+		</tr>
+		<tr ng-attr-id="{{mainCtrl.setNoteDataID(x.ID)}}" ng-class="'warning'" ng-show="x.showNote"
+		    ng-scroller scroller-to="{{mainCtrl.setTopicID(x.ID)}}" scroller-easing="easeInOutQuint" scroller-offset="1" scroller-duration="600">
+			<td ng-click="mainCtrl.noteClick(x.ID)" ng-bind-html="x.Note"></td>
+		</tr>
+		<tr ng-repeat-end="">
+		</tr>
+	</table>

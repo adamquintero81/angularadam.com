@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Adam's Web Apps</title>
+	<meta name-"description" content="Adam Quintero's AngularJS web app portfolio site. Free open source code available on My GitHub link. Features smooth automatic scrolling to html elements custom directive. Uses the model/view/controller (MVC) concept. Resume available at My LinkedIn link.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="assets/style/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="assets/style/style.css"></link>
+</head>
+
+<body ng-app="portfolioApp">
+    <nav class="navbar navbar-default ng-cloak" ng-cloak role="navigation" ng-controller="NavCtrl as navCtrl">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header ng-cloak">
+
+        <button type="button" class="navbar-toggle" ng-click="navCtrl.toggleCollapse()">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/"><img src="assets/img/angularadam02.png" class="logo" alt="AngularAdam"></a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse"   ng-class="navCtrl.toggleClass()">
+        <ul class="nav navbar-nav">
+          <li><a href="https://github.com/adamquintero81" target="_blank">Adam's GitHub</a></li>
+          <li><a href="https://www.linkedin.com/pub/adam-quintero/9b/936/373" target="_blank">Adam's LinkedIn</a></li>
+          
+          <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">AngularJS Apps <b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu">
+              <li ng-click="navCtrl.toggleCollapse()"><a ng-click="navCtrl.refAppLink()">AngularJS Reference</a></li>
+			  <li ng-click="navCtrl.toggleCollapse()"><a href="#/lookupApp">Word Lookup</a></li>
+              <li><a href="">More Apps Coming Soon!</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </nav>
+	
+	<div class="container">
+		
+		<div ng-view></div>
+		
+		<footer class="footer" ng-controller="FooterCtrl as footerCtrl">
+			<p class="muted credit">
+			<small>AngularJS Portfolio App - 1.04b</small>
+			</p>
+			<button ng-scroller type="button" class="btn btn-default btn-xs" ng-click="footerCtrl.toggleCollapse()">
+			<small>Copyright &copy; 2015  Adam M. Quintero</small>
+			</button>
+			<div collapse="footerCtrl.fCollapsed" ng-class="footerCtrl.toggleClass()">
+				<p class="muted credit"><small>
+				This program is free software: you can redistribute it and/or modify
+				it under the terms of the GNU General Public License as published by
+				the Free Software Foundation, either version 3 of the License, or
+				(at your option) any later version.
+				</small></p>
+				<p class="muted credit"><small>
+				This program is distributed in the hope that it will be useful,
+				but WITHOUT ANY WARRANTY; without even the implied warranty of
+				MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+				GNU General Public License for more details.
+				</small></p>
+				<p class="muted credit"><small>
+				You should have received a copy of the GNU General Public License
+				along with this program.  If not, see <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">GNU GPL v3</a>.
+				</small></p>
+			</div>
+		</footer>
+	</div>
+<!-- Latest compiled and minified JavaScript -->
+	<script type="text/javascript" src="assets/scripts/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="assets/scripts/angular.min.js"></script>
+	<script type="text/javascript" src="assets/scripts/ui-bootstrap-tpls-0.6.0.js"></script>
+	<script type="text/javascript" src="assets/scripts/angular-route.min.js"></script>
+	<script type="text/javascript" src="assets/scripts/angular-sanitize.min.js"></script>
+	<script type="text/javascript" src="assets/scripts/angular-ng-scroller.js"></script>
+	<script type="text/javascript" src="assets/scripts/portfolioApp.js"></script>
+	<script type="text/javascript" src="assets/scripts/filters.js"></script>
+	<script type="text/javascript" src="assets/scripts/services.js"></script>
+	<script type="text/javascript" src="assets/scripts/controllers.js"></script>
+</body>
+</html>
